@@ -1,16 +1,23 @@
 {
   "name": "portfolio_website",
   "version": "1.0.0",
-  "description": "This is my personal portfolio website",
   "main": "index.js",
   "scripts": {
-    "build": "tailwindcss -i ./input.css -o ./css/style.css",
-    "watch": "tailwindcss -i ./input.css -o ./css/style.css --watch"
+    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/armaanepiic/Portfolio_Website.git"
+  },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "tailwindcss": "^3.4.16"
+  "bugs": {
+    "url": "https://github.com/armaanepiic/Portfolio_Website/issues"
+  },
+  "homepage": "https://github.com/armaanepiic/Portfolio_Website#readme",
+  "description": "",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.2",
+    "tailwindcss": "^4.1.2"
   }
 }
