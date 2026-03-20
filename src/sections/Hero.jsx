@@ -12,6 +12,9 @@ import profilePhoto from "../assets/image.png";
 
 const styles = `
   #home .wrapper { padding-top: 10rem; padding-bottom: 6rem; }
+  @media (max-width: 768px) {
+    #home .wrapper { padding-top: 6rem; padding-bottom: 2rem; }
+  }
 
   /* ── Two-column hero layout ── */
   .hero-layout {
@@ -23,14 +26,14 @@ const styles = `
   @media (max-width: 768px) {
     .hero-layout {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 1.2rem;
     }
     .hero-photo-col { order: -1; display: flex; justify-content: center; }
   }
 
   /* ── Left text ── */
   .hero-label {
-    font-family: var(--font-mono);
+    font-family: 'Oswald', sans-serif;
     font-size: 0.78rem;
     color: var(--accent);
     letter-spacing: 0.12em;
@@ -75,12 +78,18 @@ const styles = `
     line-height: 1.8;
     margin-bottom: 2.8rem;
   }
+  @media (max-width: 768px) {
+    .hero-tagline { margin-bottom: 1.5rem; }
+  }
 
   .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 
   .scroll-indicator {
     margin-top: 4rem;
-    font-family: var(--font-mono);
+  }
+  @media (max-width: 768px) {
+    .scroll-indicator { margin-top: 1.5rem; }
+    font-family: 'Oswald', sans-serif;
     font-size: 0.72rem;
     color: var(--muted);
     letter-spacing: 0.1em;
@@ -99,7 +108,7 @@ const styles = `
     height: 280px;
   }
   @media (max-width: 768px) {
-    .hero-photo-wrap { width: 200px; height: 200px; }
+    .hero-photo-wrap { width: 140px; height: 140px; }
   }
 
   /* Rotating dashed accent ring */
