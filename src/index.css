@@ -1,0 +1,133 @@
+/* ─────────────────────────────────────────────
+   global.css  —  Design tokens + base styles
+   Change --accent to instantly re-theme the site
+───────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Oswald:wght@200..700&family=DM+Mono:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Design tokens ── */
+:root {
+  --bg:         #0c0c0e;
+  --surface:    #131316;
+  --border:     #222228;
+  --text:       #e8e6e0;
+  --muted:      #6b6a6e;
+  --accent:     #e8a020;   /* ← change this to re-theme */
+  --font-head:  'Fredericka the Great', serif;
+  --font-display: 'Fredericka the Great', serif;
+  --font-sub:   'Oswald', sans-serif;
+  --font-mono:  'DM Mono', monospace;
+  --radius:     0px;       /* sharp corners by default */
+  --transition: 0.2s ease;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Oswald', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Noise texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* ── Shared layout ── */
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 3.5rem;
+}
+@media (max-width: 768px) {
+  .wrapper { padding: 4rem 1.5rem; }
+}
+
+/* ── Section fade-in animation ── */
+.section {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Section heading helpers ── */
+.sec-label {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.sec-title {
+  font-family: 'Fredericka the Great', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin-bottom: 3rem;
+  line-height: 1.15;
+}
+
+/* ── Button styles ── */
+.btn-primary {
+  padding: 0.75rem 2rem;
+  background: var(--accent);
+  color: #0c0c0e;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition), transform 0.15s;
+}
+.btn-primary:hover { background: #f5b030; transform: translateY(-2px); }
+
+.btn-outline {
+  padding: 0.75rem 2rem;
+  background: transparent;
+  color: var(--text);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), transform 0.15s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
